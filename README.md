@@ -9,10 +9,11 @@ all the data, and stores it as a list of Transaction objects in
 all_transactions.
 
 The constructor then calls __process_data to store the data in various formats.
-This redundancy is to reduce runtime when the data is requested from the app.
+Ideally this data would then be cached/stored in the app for quick retrieval.
+However, this is beyond the scope of the current requirements.
 
 Note that the data is de-duped and cleaned in __process_data. The de-duping is
-done by checking all the parameters of each transaction object.
+done by checking all the parameters within each transaction object.
 
 
 ## Setup
@@ -34,13 +35,17 @@ To run BenchApp, use the following format of commands:
 
 <pre><code>python benchApp.py {command-name} {command-arg}</pre></code>
 
-A list of all available commands can be found in the documentation (below). The
-{command-arg} here refers to either a date (for balances), or a category.
+Here is the list of the available CLI commands:
+total {category-name}
+transactions {category-name}
+balance {date}
 
-Category names have been generated from the ledger entries. Examples include
-'Travel Expense, Nonlocal', and 'Equipment Expense'. If you wish to get data
-that is unfiltered by category, you can use the 'All' parameter. Note that
-category names are case-sensitive.
+The category names have been generated from ledger entries. Examples include
+'Travel Expense, Nonlocal', and 'Equipment Expense'. Note that these category
+names are case-sensitive
+
+All the above commands can also be used with the category 'All' so that data
+can be returned without category-based filtering.
 
 Example:
 
@@ -53,7 +58,8 @@ OR
 
 ## Docs:
 
-Docs have been generated using Sphinx, and are located in
+I've also generated docs from the functions using Sphinx, so that the code can
+be used as a packaged library. They can be found at:
 ./docs/_build/html/index.html
 
 
