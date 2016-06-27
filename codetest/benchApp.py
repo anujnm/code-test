@@ -93,7 +93,7 @@ class BenchApp(object):
                 number_transactions += 1
             index += 1
 
-    def get_total_balance(self, category=None):
+    def get_total_balance(self, category='All'):
         """
         Get total balance for inputted category. If no category is inputted,
         total balance for all transactions is returned
@@ -107,12 +107,12 @@ class BenchApp(object):
         Raises:
             AttributeError: When the given category cannot be found
         """
-        if not category:
+        if category == 'All':
             return self.total
-        elif category not in self.category_totals:
-            raise AttributeError("Could not find category " + str(category))
-        else:
+        elif category in self.category_totals:
             return self.category_totals[category]
+        else:
+            raise AttributeError("Invalid category")
 
     def get_all_daily_balances(self):
         """
@@ -136,7 +136,7 @@ class BenchApp(object):
             return self.daily_balances[max_previous_date]
         return float(0)
 
-    def get_all_transactions(self, category=None):
+    def get_all_transactions(self, category='All'):
         """
         Get all transactions for inputted category. If no category is inputted,
         all transactions for all categories are returned
@@ -150,12 +150,15 @@ class BenchApp(object):
         Raises:
             AttributeError: When the given category cannot be found
         """
-        if not category:
+        if category == 'All':
             return self.all_transactions
-        elif category not in self.category_data:
-            raise AttributeError("Could not find category " + str(category))
-        else:
+        elif category in self.category_data:
             return self.category_data[category]
+        else:
+            raise AttributeError("Invalid category")
+
+    def get_all_categories(self):
+        return self.category_data.keys()
 
 if __name__ == "__main__":
 
@@ -166,19 +169,29 @@ if __name__ == "__main__":
 
     if sys.argv[1] == 'transactions':
         if len(sys.argv) == 2:
-            print bench_app.get_all_transactions()
+            print "Please provide one of the following categories as an " \
+                  "argument. Note that the category names are case-sensitive."
+            categories = bench_app.get_all_categories()
+            categories.append('All')
+            print categories
         else:
             print bench_app.get_all_transactions(sys.argv[2])
     elif sys.argv[1] == 'total':
         if len(sys.argv) == 2:
-            print bench_app.get_total_balance()
+            print "Please provide one of the following categories as an " \
+                  "argument. Note that the category names are case-sensitive."
+            categories = bench_app.get_all_categories()
+            categories.append('All')
+            print categories
         else:
             print bench_app.get_total_balance(sys.argv[2])
     elif sys.argv[1] == 'balance':
         if len(sys.argv) == 2:
             print bench_app.get_balance()
-        elif sys.argv == 'all':
-            print bench_app.get_all_daily_balances()
+        elif sys.argv[2] == 'All':
+            all_balances = bench_app.get_all_daily_balances()
+            for date in sorted(all_balances):
+                print date.strftime("%Y-%m-%d"), all_balances[date]
         else:
             date_input = datetime.strptime(sys.argv[2], '%Y-%m-%d')
             print bench_app.get_balance(date_input)

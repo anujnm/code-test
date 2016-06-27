@@ -1,5 +1,5 @@
 # code-test
-## Introduction
+## Overview
 
 This project demonstrates how a REST API can be used to extract reports and
 other useful data.
@@ -14,8 +14,6 @@ This redundancy is to reduce runtime when the data is requested from the app.
 Note that the data is de-duped and cleaned in __process_data. The de-duping is
 done by checking all the parameters of each transaction object.
 
-Documentation has been generated using Sphinx and can be found at 
-./docs/_build/html/index.html
 
 ## Setup
 
@@ -36,6 +34,14 @@ To run BenchApp, use the following format of commands:
 
 <pre><code>python benchApp.py {command-name} {command-arg}</pre></code>
 
+A list of all available commands can be found in the documentation (below). The
+{command-arg} here refers to either a date (for balances), or a category.
+
+Category names have been generated from the ledger entries. Examples include
+'Travel Expense, Nonlocal', and 'Equipment Expense'. If you wish to get data
+that is unfiltered by category, you can use the 'All' parameter. Note that
+category names are case-sensitive.
+
 Example:
 
 <pre><code>python benchApp.py total 'Business Meals & Entertainment Expense'</pre></code>
@@ -43,6 +49,7 @@ Example:
 OR
 
 <pre><code>python benchApp.py total</pre></code>
+
 
 ## Docs:
 

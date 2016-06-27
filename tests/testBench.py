@@ -28,3 +28,7 @@ class TestBenchApp(unittest.TestCase):
         insurance_transactions = \
             self.bench_app.get_all_transactions('Insurance Expense')
         self.assertEqual(len(insurance_transactions), 3)
+
+    def test_get_all_categories(self):
+        all_categories = self.bench_app.get_all_categories()
+        self.assertEqual(len(all_categories), 11)
