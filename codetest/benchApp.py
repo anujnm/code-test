@@ -71,8 +71,8 @@ class BenchApp(object):
                 req = requests.get(url)
                 data = req.json()
             except ValueError:
-                # If the API 404's, break out of the loop and return
-                break
+                # If the API 404's, raise an exception
+                raise Exception("API error, please try again later")
             if total_transactions == float("inf"):
                 total_transactions = data['totalCount']
 
@@ -163,7 +163,8 @@ class BenchApp(object):
 if __name__ == "__main__":
 
     if len(sys.argv) < 2:
-        raise AttributeError("Please indicate what data you want")
+        raise AttributeError("Please choose from one of the available commands:"
+                             " transactions, total, and balance")
 
     bench_app = BenchApp()
 
@@ -196,4 +197,5 @@ if __name__ == "__main__":
             date_input = datetime.strptime(sys.argv[2], '%Y-%m-%d')
             print bench_app.get_balance(date_input)
     else:
-        raise AttributeError("Please read the docs to see available functions")
+        raise AttributeError("Please choose from one of the available commands:"
+                             " transactions, total, and balance")

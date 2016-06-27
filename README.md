@@ -36,8 +36,11 @@ To run BenchApp, use the following format of commands:
 <pre><code>python benchApp.py {command-name} {command-arg}</pre></code>
 
 Here is the list of the available CLI commands:
+
 total {category-name}
+
 transactions {category-name}
+
 balance {date}
 
 The category names have been generated from ledger entries. Examples include
