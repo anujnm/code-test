@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to CodeTest’s documentation! &mdash; CodeTest 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CodeTest 1.0.0 documentation" href="#" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-codetest-s-documentation">
+<h1>Welcome to CodeTest&#8217;s documentation!<a class="headerlink" href="#welcome-to-codetest-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<span class="target" id="module-benchApp"></span><dl class="class">
+<dt id="benchApp.BenchApp">
+<em class="property">class </em><code class="descclassname">benchApp.</code><code class="descname">BenchApp</code><a class="headerlink" href="#benchApp.BenchApp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="benchApp.BenchApp.get_all_daily_balances">
+<code class="descname">get_all_daily_balances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchApp.BenchApp.get_all_daily_balances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get daily balance for each unique day</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>Dictionaries with date: total for all dates in transactions</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchApp.BenchApp.get_all_transactions">
+<code class="descname">get_all_transactions</code><span class="sig-paren">(</span><em>category=None</em><span class="sig-paren">)</span><a class="headerlink" href="#benchApp.BenchApp.get_all_transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all transactions for inputted category. If no category is inputted,
+all transactions for all categories are returned</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>category &#8211; category to get transactions for</dd>
+<dt>Returns:</dt>
+<dd>list: List of transactions</dd>
+<dt>Raises:</dt>
+<dd>AttributeError: When the given category cannot be found</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchApp.BenchApp.get_balance">
+<code class="descname">get_balance</code><span class="sig-paren">(</span><em>date=datetime.datetime(2016</em>, <em>6</em>, <em>27</em>, <em>0</em>, <em>15</em>, <em>20</em>, <em>769210)</em><span class="sig-paren">)</span><a class="headerlink" href="#benchApp.BenchApp.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get daily balance for given date (EOD balance)</p>
+<dl class="docutils">
+<dt>Returns</dt>
+<dd>float: daily balance for that day. 0 if date is prior to all
+transactions.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchApp.BenchApp.get_total_balance">
+<code class="descname">get_total_balance</code><span class="sig-paren">(</span><em>category=None</em><span class="sig-paren">)</span><a class="headerlink" href="#benchApp.BenchApp.get_total_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total balance for inputted category. If no category is inputted,
+total balance for all transactions is returned</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>category &#8211; category to get balance for</dd>
+<dt>Returns:</dt>
+<dd>float: The total balance for inputted category</dd>
+<dt>Raises:</dt>
+<dd>AttributeError: When the given category cannot be found</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-transaction"></span><dl class="class">
+<dt id="transaction.Transaction">
+<em class="property">class </em><code class="descclassname">transaction.</code><code class="descname">Transaction</code><span class="sig-paren">(</span><em>amount</em>, <em>company</em>, <em>date</em>, <em>ledger</em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="transaction.Transaction.__eq__">
+<code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.Transaction.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overriding the equals operator
+Checks each data field is the same for both objects while ignoring case</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.Transaction.__hash__">
+<code class="descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.Transaction.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overriding the hash function to allow objects in sets/lists to be
+compared</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.Transaction.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.Transaction.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overriding this function to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.Transaction.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.Transaction.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Old method for returning a String representation of the object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.Transaction.__unicode__">
+<code class="descname">__unicode__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.Transaction.__unicode__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a String representation of the object
+Equivalent to Java&#8217;s toString() method</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="transaction.Transaction.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#transaction.Transaction.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to CodeTest&#8217;s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Anuj Mehta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
