@@ -3,7 +3,7 @@ from datetime import datetime
 import sys
 import requests
 
-from transaction import Transaction
+from .transaction import Transaction
 
 
 BASE_URL = 'http://resttest.bench.co/transactions/'

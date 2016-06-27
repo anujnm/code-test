@@ -1,1 +1,3 @@
 .idea/*
+.build/*
+.CodeTest.egg-info/*
