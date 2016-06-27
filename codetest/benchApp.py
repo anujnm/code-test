@@ -1,9 +1,9 @@
-from transaction import Transaction
-
 from sets import Set
 from datetime import datetime
-import requests
 import sys
+import requests
+
+from transaction import Transaction
 
 
 BASE_URL = 'http://resttest.bench.co/transactions/'
@@ -180,7 +180,7 @@ if __name__ == "__main__":
         elif sys.argv == 'all':
             print bench_app.get_all_daily_balances()
         else:
-            date = datetime.strptime(sys.argv[2], '%Y-%m-%d')
-            print bench_app.get_balance(date)
+            date_input = datetime.strptime(sys.argv[2], '%Y-%m-%d')
+            print bench_app.get_balance(date_input)
     else:
         raise AttributeError("Please read the docs to see available functions")

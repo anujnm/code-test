@@ -1,6 +1,10 @@
-from benchApp import BenchApp
 import unittest
+import sys
+import os
 from datetime import datetime
+sys.path.insert(0, os.path.abspath('..'))
+
+from codetest.benchApp import BenchApp
 
 
 class TestBenchApp(unittest.TestCase):
