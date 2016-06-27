@@ -1,5 +1,5 @@
 # code-test
-REST API code test
+##REST API code test
 
 This project demonstrates how a REST API can be used to extract reports and
 other useful data.
@@ -19,18 +19,18 @@ python docstrings.
 
 To run BenchApp, use the following format of commands:
 
-python benchApp.py <command-name> <command-arg>
+<pre><code>python benchApp.py <command-name> <command-arg></pre></code>
 
 Example:
 
-python benchApp.py total 'Business Meals & Entertainment Expense'
+<pre><code>python benchApp.py total 'Business Meals & Entertainment Expense'</pre></code>
 
 OR
 
-python benchApp.py total
+<pre><code>python benchApp.py total</pre></code>
 
 
-TESTS:
+## TESTS:
 
 I've also included a few basic test cases. Note that these tests are hardcoded
 to check against live data. Normally this would not be acceptable, and I would
@@ -38,4 +38,5 @@ instead provide each test with its own disposable data, however I felt that this
 was beyond the scope of the project.
 
 To run the tests, run this command from within the tests folder:
-python -m unittest testBench
+
+<pre><code>python -m unittest testBench</pre></code>
