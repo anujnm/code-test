@@ -11,10 +11,6 @@ class TestBenchApp(unittest.TestCase):
     def test_get_total(self):
         self.assertEqual(self.bench_app.get_total_balance(), 20262.81)
 
-    def test_get_category_totals(self):
-        category_totals = self.bench_app.get_all_category_totals()
-        self.assertEqual(len(category_totals), 11)
-
     def test_get_daily_balances(self):
         daily_balances = self.bench_app.get_all_daily_balances()
         self.assertEqual(len(daily_balances), 10)

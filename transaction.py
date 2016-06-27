@@ -12,7 +12,7 @@ class Transaction(object):
         Equivalent to Java's toString() method
         """
         return \
-            'Amount: {}, Company: {}, Date: {}, Ledger: {}'.format(
+            '\nAmount: {}, Company: {}, Date: {}, Ledger: {}'.format(
                 self.amount, self.company, self.date, self.ledger)
 
     def __str__(self):

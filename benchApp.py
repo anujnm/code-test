@@ -1,7 +1,9 @@
 from transaction import Transaction
+
 from sets import Set
-import requests
 from datetime import datetime
+import requests
+import sys
 
 
 BASE_URL = 'http://resttest.bench.co/transactions/'
@@ -65,9 +67,12 @@ class BenchApp(object):
         total_transactions = float("inf")  # update the value once it is known
         while number_transactions < total_transactions:
             url = BASE_URL + str(index) + URL_SUFFIX
-            req = requests.get(url)
-            data = req.json()
-
+            try:
+                req = requests.get(url)
+                data = req.json()
+            except ValueError:
+                # If the API 404's, break out of the loop and return
+                break
             if total_transactions == float("inf"):
                 total_transactions = data['totalCount']
 
@@ -105,18 +110,9 @@ class BenchApp(object):
         if not category:
             return self.total
         elif category not in self.category_totals:
-            raise AttributeError("Could not find cateogry " + str(category))
+            raise AttributeError("Could not find category " + str(category))
         else:
             return self.category_totals[category]
-
-    def get_all_category_totals(self):
-        """
-        Get all totals for each category
-
-        Returns:
-            Dictionaries with category: total for all categories of transactions
-        """
-        return self.category_totals
 
     def get_all_daily_balances(self):
         """
@@ -127,7 +123,7 @@ class BenchApp(object):
         """
         return self.daily_balances
 
-    def get_balance(self, date):
+    def get_balance(self, date=datetime.now()):
         """
         Get daily balance for given date (EOD balance)
 
@@ -160,3 +156,31 @@ class BenchApp(object):
             raise AttributeError("Could not find category " + str(category))
         else:
             return self.category_data[category]
+
+if __name__ == "__main__":
+
+    if len(sys.argv) < 2:
+        raise AttributeError("Please indicate what data you want")
+
+    bench_app = BenchApp()
+
+    if sys.argv[1] == 'transactions':
+        if len(sys.argv) == 2:
+            print bench_app.get_all_transactions()
+        else:
+            print bench_app.get_all_transactions(sys.argv[2])
+    elif sys.argv[1] == 'total':
+        if len(sys.argv) == 2:
+            print bench_app.get_total_balance()
+        else:
+            print bench_app.get_total_balance(sys.argv[2])
+    elif sys.argv[1] == 'balance':
+        if len(sys.argv) == 2:
+            print bench_app.get_balance()
+        elif sys.argv == 'all':
+            print bench_app.get_all_daily_balances()
+        else:
+            date = datetime.strptime(sys.argv[2], '%Y-%m-%d')
+            print bench_app.get_balance(date)
+    else:
+        raise AttributeError("Please read the docs to see available functions")
