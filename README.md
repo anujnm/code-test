@@ -17,6 +17,21 @@ done by checking all the parameters of each transaction object.
 BenchApp contains 6 public functions, all of which are documented with
 python docstrings.
 
+## SETUP
+
+The required python packages can be found in requirements.txt. This can be done
+using pip as follows:
+<pre><code>pip install -r requirements.txt</pre></code>
+
+Once the packages have been installed, run the install command using setup.py as
+follows:
+<pre><code>python setup.py install</pre></code>
+
+You may test the installation using setup.py as follows:
+<pre><code>python setup.py test</pre></code>
+
+## USING THE CLI
+
 To run BenchApp, use the following format of commands:
 
 <pre><code>python benchApp.py <command-name> <command-arg></pre></code>
@@ -29,6 +44,11 @@ OR
 
 <pre><code>python benchApp.py total</pre></code>
 
+## DOCS:
+
+Docs have been generated using Sphinx, and are located in
+./docs/_build/html/index.html
+
 
 ## TESTS:
 
@@ -38,5 +58,9 @@ instead provide each test with its own disposable data, however I felt that this
 was beyond the scope of the project.
 
 To run the tests, run this command from within the tests folder:
+
+<pre><code>python setup.py test</pre></code>
+
+OR
 
 <pre><code>python -m unittest testBench</pre></code>
